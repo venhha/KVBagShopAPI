@@ -8,6 +8,7 @@ import com.example.kvbagshopapi.exceptions.NotFoundException;
 import com.example.kvbagshopapi.repositories.UserRepository;
 import com.example.kvbagshopapi.services.IUserService;
 import com.example.kvbagshopapi.utils.MapperUtils;
+import com.example.kvbagshopapi.utils.MyUtils;
 import com.example.kvbagshopapi.utils.Role;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -85,6 +86,9 @@ public class UserServiceImpl implements IUserService {
         User User = modelMapper.map(signUp, User.class);
         List<Role> roles = new ArrayList<>();
         roles.add(Role.ROLE_USER);
+        User.setName(MyUtils.getRandomName()); // random name for user
+        System.out.println(User.getName());
+        
         User.setRoles(roles);
         User.setIsActive(true);
         User savedUser = userRepository.save(User);

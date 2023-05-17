@@ -12,7 +12,7 @@ import lombok.Setter;
 public class SignUp {
     private long id;
 
-    private String name;
+    // private String name;
 
     private String userName;
 
